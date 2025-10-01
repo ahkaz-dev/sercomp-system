@@ -1,0 +1,135 @@
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f9f9f9;
+    color: #2e2e2e;
+}
+.hero {
+    background: linear-gradient(90deg, #3350c6, #4a6cf7);
+    color: white;
+    padding: 60px 15px;
+    text-align: center;
+    box-shadow: inset 0 -4px 10px rgb(0 0 0 / 0.15);
+}
+.hero h1 {
+    font-weight: 700;
+    font-size: 3rem;
+    margin-bottom: 0.3em;
+}
+.hero p {
+    font-weight: 500;
+    font-size: 1.25rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+h2 {
+    font-weight: 700;
+    color: #3350c6;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+/* Отзывы */
+.review-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 6px 18px rgb(51 80 198 / 0.1);
+    padding: 25px 30px;
+    position: relative;
+    border-left: 6px solid #3350c6;
+    transition: box-shadow 0.3s ease;
+}
+.review-card:hover {
+    box-shadow: 0 10px 30px rgb(51 80 198 / 0.2);
+}
+.review-card h5 {
+    font-weight: 700;
+    color: #3350c6;
+    margin-bottom: 8px;
+    user-select: none;
+}
+.review-card .rating-stars {
+    color: #ffc107;
+    font-size: 1.15rem;
+    margin-left: 8px;
+    user-select: none;
+}
+.review-card p {
+    font-size: 1rem;
+    color: #444;
+    margin-top: 12px;
+    line-height: 1.5;
+}
+
+/* Форма отзыва */
+.submit-card {
+    background: white;
+    border-radius: 20px;
+    padding: 40px 30px;
+    box-shadow: 0 6px 22px rgb(51 80 198 / 0.25);
+    max-width: 700px;
+    margin: 0 auto;
+    transition: box-shadow 0.3s ease;
+}
+.submit-card:hover {
+    box-shadow: 0 12px 40px rgb(51 80 198 / 0.35);
+}
+label.form-label {
+    font-weight: 600;
+    color: #3350c6;
+}
+.form-control, .form-select {
+    border-radius: 12px;
+    border: 1.5px solid #ced4da;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+.form-control:focus, .form-select:focus {
+    border-color: #3350c6;
+    box-shadow: 0 0 8px rgb(51 80 198 / 0.25);
+    outline: none;
+}
+button.btn-submit {
+    background: #3350c6;
+    color: white;
+    font-weight: 700;
+    font-size: 1.15rem;
+    padding: 14px 40px;
+    border-radius: 12px;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+button.btn-submit:hover {
+    background: #4a6cf7;
+    color: white;
+}
+
+
+
+/* Адаптив */
+@media (max-width: 768px) {
+    .hero h1 {
+    font-size: 2rem;
+    }
+    .review-card {
+    padding: 20px 20px;
+    border-left-width: 4px;
+    }
+    .review-card h5 {
+    font-size: 1.1rem;
+    }
+    .review-card p {
+    font-size: 0.95rem;
+    }
+    .submit-card {
+    padding: 30px 20px;
+    }
+    button.btn-submit {
+    width: 100%;
+    font-size: 1.1rem;
+    }
+    .bottom-cta {
+    padding: 40px 15px;
+    font-size: 0.95rem;
+    }
+}

@@ -1,0 +1,92 @@
+.hero {
+    background: linear-gradient(90deg, #6610f2 0%, #5a00e0 100%);
+    color: #fff;
+    padding: 50px 0 60px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+}
+.hero h1 {
+    font-weight: 700;
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    user-select: none;
+}
+.hero p {
+    font-size: 1.25rem;
+    opacity: 0.85;
+    user-select: none;
+}
+
+.order-card {
+    border-left: 5px solid #6610f2;
+    background-color: #fefefe;
+    padding: 1.5rem 1.8rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgb(102 16 242 / 0.15);
+    transition: box-shadow 0.3s ease;
+    cursor: default;
+}
+.order-card:hover {
+    box-shadow: 0 12px 30px rgb(102 16 242 / 0.3);
+}
+.order-card h5 {
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: #3a3a3a;
+    user-select: text;
+}
+.order-card p {
+    color: #555;
+    margin-bottom: 0.3rem;
+    font-size: 1rem;
+    user-select: text;
+}
+.tag {
+    display: inline-block;
+    background-color: #e2e3f3;
+    color: #343a40;
+    border-radius: 0.4rem;
+    padding: 0.3rem 0.7rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    user-select: none;
+    box-shadow: 1px 1px 4px rgb(102 16 242 / 0.1);
+    transition: background-color 0.3s ease;
+}
+.tag:hover {
+    background-color: #d0d2fa;
+}
+
+/* Call to Action */
+section.bg-light.py-5.text-center {
+    background: #f9f9fb;
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+}
+section.bg-light h2 {
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+    user-select: none;
+    color: #2c2c2c;
+}
+section.bg-light p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: #555;
+    user-select: none;
+}
+section.bg-light a.btn-primary {
+    background-color: #6610f2;
+    border: none;
+    padding: 12px 30px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+section.bg-light a.btn-primary:hover {
+    background-color: #5a00e0;
+    text-decoration: none;
+}

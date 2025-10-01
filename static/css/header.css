@@ -1,0 +1,481 @@
+body.dark-theme {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+body {
+    padding-top: 5% !important;
+}
+body.dark-theme a {
+  color: #66aaff;
+}
+
+body.dark-theme nav,
+body.dark-theme header,
+body.dark-theme footer {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+}
+
+body.dark-theme .card,
+body.dark-theme .service-item,
+body.dark-theme .order-item,
+body.dark-theme .contact-form,
+body.dark-theme .testimonial {
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  color: #e0e0e0;
+}
+
+body.dark-theme input,
+body.dark-theme textarea,
+body.dark-theme select {
+  background-color: #2a2a2a;
+  color: #e0e0e0;
+  border: 1px solid #444;
+}
+
+body.dark-theme button,
+body.dark-theme .btn {
+  background-color: #333;
+  color: #e0e0e0;
+  border: 1px solid #555;
+}
+
+body.dark-theme .btn:hover {
+  background-color: #444;
+}
+
+body.dark-theme .highlight,
+body.dark-theme .feature {
+  background-color: #222;
+  color: #e0e0e0;
+}
+/* Перекрытие Bootstrap по тёмной теме */
+body.dark-theme .bg-white,
+body.dark-theme .text-bg-light,
+body.dark-theme .dropdown-menu {
+  background-color: #1e1e1e !important;
+  color: #e0e0e0;
+}
+
+body.dark-theme .dropdown-item {
+  color: #e0e0e0;
+}
+body.dark-theme .dropdown-item:hover {
+  background-color: #333;
+}
+
+body.dark-theme .navbar,
+body.dark-theme .offcanvas-header {
+  background-color: #1e1e1e !important;
+}
+
+body.dark-theme .btn-outline-dark {
+  color: #e0e0e0;
+  border-color: #777;
+}
+body.dark-theme .btn-outline-dark:hover {
+  background-color: #333;
+  color: #fff;
+  border-color: #aaa;
+}
+
+body.dark-theme .btn-primary {
+  background-color: #3949ab;
+  border-color: #3949ab;
+}
+body.dark-theme .btn-primary:hover {
+  background-color: #303f9f;
+  border-color: #303f9f;
+}
+
+body.dark-theme .btn-close {
+  filter: invert(1);
+}
+
+body.dark-theme .offcanvas {
+  background-color: #1e1e1e !important;
+  color: #e0e0e0;
+}
+
+body.dark-theme .text-muted {
+  color: #bbb !important;
+}
+
+body.dark-theme .shadow-sm {
+  box-shadow: none !important;
+}
+/* Показывать логотипы в зависимости от темы */
+body.dark-theme #logoDefault {
+  display: none !important;
+}
+body.dark-theme #logoDark {
+  display: block !important;
+}
+body.dark-theme a {
+  color: #99c9ff; /* чуть ярче */
+}
+
+body.dark-theme .text-muted {
+  color: #aaa !important;
+}
+  /* Общие стили для тёмной темы */
+  body.dark-theme {
+    background-color: #121212;
+    color: #f1f1f1;
+  }
+
+  body.dark-theme header {
+    background-color: #1f1f1f !important;
+    color: #f1f1f1;
+  }
+
+  body.dark-theme .navbar-nav .nav-link {
+    color: #ddd !important;
+  }
+
+  body.dark-theme .text-muted {
+    color: #aaa !important;
+  }
+
+  body.dark-theme .dropdown-menu {
+    background-color: #2b2b2b;
+    color: #fff;
+  }
+
+  body.dark-theme .dropdown-menu .dropdown-item {
+    color: #f1f1f1;
+  }
+
+  body.dark-theme .dropdown-menu .dropdown-item:hover {
+    background-color: #3a3a3a;
+  }
+
+  body.dark-theme .btn-outline-dark {
+    border-color: #ccc;
+    color: #ccc;
+  }
+
+  body.dark-theme .btn-outline-dark:hover {
+    background-color: #444;
+    color: #fff;
+  }
+
+  /* Замена логотипа */
+  #logoDark {
+    display: none;
+  }
+
+  body.dark-theme #logoDefault {
+    display: none !important;
+  }
+
+  body.dark-theme #logoDark {
+    display: block !important;
+  }
+
+  body.dark-theme .offcanvas {
+    background-color: #1f1f1f;
+    color: #fff;
+  }
+  body.dark-theme .offcanvas-title {
+    color: #fff;
+  }
+  body.dark-theme .btn-close {
+    filter: invert(1);
+  }
+  iframe.dark-theme {
+      filter: invert(1) hue-rotate(180deg);
+
+  }
+
+
+
+
+    .nunito-reg {
+      font-family: "Nunito", sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 400;
+      font-style: normal;
+    }
+    .nunito-bold {
+      font-family: "Nunito", sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 700;
+      font-style: normal;
+    }
+    .nunito-black {
+      font-family: "Nunito", sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 900;
+      font-style: normal;
+    }
+
+    html, body {
+      font-family: "Nunito", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+      font-optical-sizing: auto;
+    }
+
+    
+    .form-control:focus {
+        border-color:rgb(0, 0, 0);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    }
+    .form-control {
+        border-radius: 0;
+    }
+    .hidden {
+            display: none;
+    }
+    .btn-mb-primary {
+        font-weight: 600;
+        color: white;
+        background-color: #252da5;
+        border: 1px solid #252da5;
+    }
+
+    .btn-mb-primary:hover {
+        color: white;
+        background-color: #202891; /* Осветлённый #252da5 на 10% */
+        border-color: #202891;
+    }
+
+    .btn-mb-primary:focus {
+        box-shadow: 0 0 0 0.25rem rgba(37, 45, 165, 0.5); /* Используемый в оригинале цвет с прозрачностью */
+    }
+
+    .btn-mb-primary:active {
+        color: white;
+        background-color: #1b237e; /* Осветлённый #252da5 на 20% */
+        border-color: #1b237e;
+    }
+
+
+
+    .comfortaa-regular {
+        font-family: "Comfortaa", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+    }
+    .comfortaa-bold {
+        font-family: "Comfortaa", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 500;
+        font-style: normal;
+    }
+    .container.py-5 {
+        /* background-color: #efefef8f; */
+        width: 100%;
+        height: 100%;
+    }
+    .container.mt-5, .color-cont-fix {
+        background-color: transparent !important;
+
+    }
+
+
+
+
+
+@media only screen and (max-width: 600px) {
+    body {
+        padding-top: 25% !important;
+    }
+
+}
+
+@media only screen and (min-width: 600px) {
+      body {
+        padding-top: 15% !important;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+        body {
+        padding-top: 10% !important;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+          body {
+        padding-top: 10% !important;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+          body {
+        padding-top: 12% !important;
+    }
+}
+@media only screen and (min-width: 1400px) {
+          body {
+        padding-top: 10% !important;
+    }
+}
+@media only screen and (min-width: 1600px) {
+          body {
+        padding-top: 5% !important;
+    }
+}
+
+    /* Плавное появление текста в выпадающем меню */
+.dropdown-menu {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  display: none; /* Изначально скрыто */
+}
+
+.dropdown-menu.show {
+  opacity: 1;
+  display: block; /* Показываем меню */
+}
+
+/* Общий стиль для всех элементов */
+.main-content {
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
+
+/* Анимация плавного появления */
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+main-content {
+  animation-delay: 1s;
+}
+  .offcanvas {
+    transition: transform 0.4s ease-in-out !important;
+  }
+
+  .offcanvas-backdrop {
+    transition: opacity 0.5s ease-in-out !important;
+  }
+
+  header.stuck {
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+ body {
+  transition: background-color 0.4s, color 0.4s;
+}
+
+.theme-toggle {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.theme-toggle input {
+  display: none;
+}
+
+.slider {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #f1c40f;
+  transition: background 0.5s cubic-bezier(.4,2,.3,1), box-shadow 0.5s cubic-bezier(.4,2,.3,1);
+  box-shadow: 0 0 8px 2px #ffe066, 0 0 0 0 #fff;
+}
+
+.slider::before {
+  /* "Луна" - маска */
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #f1c40f;
+  box-shadow: 0 0 0 0 #fff;
+  transition:
+    background 0.5s cubic-bezier(.4,2,.3,1),
+    transform 0.5s cubic-bezier(.4,2,.3,1),
+    left 0.5s cubic-bezier(.4,2,.3,1),
+    top 0.5s cubic-bezier(.4,2,.3,1);
+  z-index: 2;
+}
+
+.slider::after {
+  /* Лучи солнца */
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 32px;
+  height: 32px;
+  pointer-events: none;
+  background: conic-gradient(
+    from 0deg,
+    #ffe066 0 10deg,
+    transparent 10deg 20deg,
+    #ffe066 20deg 30deg,
+    transparent 30deg 40deg,
+    #ffe066 40deg 50deg,
+    transparent 50deg 60deg,
+    #ffe066 60deg 70deg,
+    transparent 70deg 80deg,
+    #ffe066 80deg 90deg,
+    transparent 90deg 100deg,
+    #ffe066 100deg 110deg,
+    transparent 110deg 120deg,
+    #ffe066 120deg 130deg,
+    transparent 130deg 140deg,
+    #ffe066 140deg 150deg,
+    transparent 150deg 160deg,
+    #ffe066 160deg 170deg,
+    transparent 170deg 180deg
+  );
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  transition: opacity 0.5s cubic-bezier(.4,2,.3,1), transform 0.5s cubic-bezier(.4,2,.3,1);
+  z-index: 1;
+}
+
+input:checked + .slider {
+  background: #2c3e50;
+  box-shadow: 0 0 8px 2px #2c3e50, 0 0 0 0 #fff;
+}
+
+input:checked + .slider::before {
+  background: #2c3e50;
+  left: 16px;
+  top: 10px;
+  transform: scale(0.8);
+  /* Маска луны смещается, создавая "серп" */
+}
+
+input:checked + .slider::after {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.7);
+}
+
+.dark-theme {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+body.dark-theme .btn:hover, body.dark-theme .dropdown-menu .dropdown-item:hover {
+  text-decoration: none;
+}

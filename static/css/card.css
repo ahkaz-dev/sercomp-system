@@ -1,0 +1,48 @@
+.feature-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+    padding: 1.5rem 1.5rem 2.5rem 1.5rem;
+    position: relative;
+    min-width: 240px;
+    max-width: 280px;
+    margin: 1rem;
+  }
+  .feature-card .top-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 4px;
+    width: 60px;
+    border-radius: 12px 12px 0 0;
+  }
+  .feature-card h5 {
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .feature-card p {
+    color: #6c757d;
+    font-size: 0.9rem;
+    margin-bottom: 2.2rem;
+  }
+  .feature-card .icon {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    font-size: 2.2rem;
+    opacity: 0.8;
+  }
+
+  /* Цвета для разных карточек */
+  .feature-card.supervisor .top-border {
+    background-color: #20c997; /* teal */
+  }
+  .feature-card.team-builder .top-border {
+    background-color: #dc3545; /* red */
+  }
+  .feature-card.calculator .top-border {
+    background-color: #0d6efd; /* blue */
+  }
+  .feature-card.karma .top-border {
+    background-color: #fd7e14; /* orange */
+  }

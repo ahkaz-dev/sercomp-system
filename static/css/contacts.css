@@ -1,0 +1,100 @@
+.hero {
+    background: linear-gradient(90deg, #0d6efd 0%, #0a58ca 100%);
+    color: #fff;
+    padding: 55px 0 65px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+.hero h1 {
+    font-weight: 700;
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    user-select: none;
+}
+.hero p {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    user-select: none;
+}
+
+.contact-card {
+    background-color: #fefefe;
+    border-left: 6px solid #0d6efd;
+    padding: 2rem 2.2rem;
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgb(13 110 253 / 0.15);
+    transition: box-shadow 0.3s ease;
+    user-select: text;
+}
+.contact-card:hover {
+    box-shadow: 0 14px 40px rgb(13 110 253 / 0.25);
+}
+.contact-card h5 {
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: #0d6efd;
+    margin-bottom: 0.6rem;
+    user-select: text;
+}
+.contact-card p {
+    font-size: 1.05rem;
+    color: #444;
+    margin-bottom: 1.2rem;
+    line-height: 1.5;
+}
+.contact-card a {
+    color: #0d6efd;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    user-select: text;
+}
+.contact-card a:hover {
+    color: #084dbc;
+    text-decoration: underline;
+}
+
+.container .iframe {
+    border: none;
+    width: 100%;
+    height: 420px;
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgb(13 110 253 / 0.15);
+    transition: box-shadow 0.3s ease;
+}
+.container .iframe:hover {
+    box-shadow: 0 14px 40px rgb(13 110 253 / 0.25);
+}
+
+/* Call to Action */
+section.bg-light.py-5.text-center {
+    background: #f8f9fa;
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+}
+section.bg-light h2 {
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+    color: #2a2a2a;
+    user-select: none;
+}
+section.bg-light p {
+    font-size: 1.15rem;
+    margin-bottom: 1.5rem;
+    color: #555;
+    user-select: none;
+}
+section.bg-light a.btn-primary {
+    background-color: #0d6efd;
+    border: none;
+    padding: 13px 32px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border-radius: 9px;
+    transition: background-color 0.3s ease;
+}
+section.bg-light a.btn-primary:hover {
+    background-color: #084dbc;
+    text-decoration: none;
+}

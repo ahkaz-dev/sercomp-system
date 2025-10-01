@@ -1,0 +1,52 @@
+.login-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+}
+.image-section {
+    flex: 1;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../../static/img/login-back.png') no-repeat center center;
+    background-size: cover;
+    background-color: #f8f9fa;
+    min-height: 300px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 20px;
+}
+.image-text {
+    max-width: 80%;
+}
+.image-text svg {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+}
+.form-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@media (max-width: 768px) {
+    .login-container {
+        flex-direction: column;
+    }
+    .image-section {
+        height: 40vh;
+        background-size: cover;
+        background-position: center;
+    }
+    .form-section {
+        height: 60vh;
+    }
+    .image-text img {
+        width: 85%;
+    }
+    .main-content {
+            margin-bottom: 10%;
+    }
+}
