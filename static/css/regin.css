@@ -1,0 +1,154 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.login-container {
+    height: 100vh; /* на весь экран по высоте */
+    display: flex;
+    flex-direction: row-reverse;
+    margin: 0; /* убираем margin, чтобы не было отступов */
+}
+
+.image-section {
+    flex: 1;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../../static/img/regin-back.png') no-repeat center center;
+    background-size: cover;
+    min-height: 100vh; /* на всю высоту экрана */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.form-section {
+    flex: 1;
+    padding: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* тоже на всю высоту */
+    box-sizing: border-box;
+}
+
+/* Чтобы текст не расползался слишком сильно */
+.image-text {
+    max-width: 80%;
+}
+
+
+    .image-text svg {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 10px;
+    }
+    .form-section {
+        flex: 1;
+        padding: 2%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .card {
+        width: 100%;
+        max-width: 400px;
+    }
+ /* Мобильная адаптация */
+@media (max-width: 768px) {
+    .login-container {
+        flex-direction: column;
+        min-height: 100vh;
+        margin-bottom: 35%;
+    }
+
+    .image-section {
+        padding-top: 80px !important;
+        min-height: 300px; /* было 200px, увеличиваем */
+        background-size: cover;
+        background-position: center;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* центрируем содержимое по вертикали */
+        align-items: center;
+        color: white;
+        padding: 5%;
+    }
+    .image-text {
+        max-width: 100%;
+        font-size: 1rem;
+        line-height: 1.5;
+        padding: 15px;
+    }
+
+    .image-text h2 {
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+    }
+
+    .image-text p {
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+
+
+    .form-section {
+        flex: 1;
+        padding: 5%;
+        min-height: auto;
+    }
+
+    .image-text img {
+        width: 70%;
+        max-width: 250px;
+        
+    }
+
+    .image-text .other {
+        font-size: small;
+        color: #9f9f9f;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    .btn {
+        font-size: 1rem;
+    }
+
+    .btn-outline-secondary.btn-sm {
+        padding: 6px 12px;
+        font-size: 0.875rem;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .btn-success,
+    .btn-secondary {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .text-center.mt-3 {
+        margin-top: 1.5rem !important;
+    }
+
+    .nav-link {
+        display: block;
+        text-align: center;
+        margin-top: 15px;
+    }
+}
+@media (max-width: 568px) {
+    .login-container {
+        margin-bottom: 65%;
+    }
+}

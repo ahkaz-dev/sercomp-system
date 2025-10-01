@@ -1,0 +1,357 @@
+body {
+    background-color: #f4f7fb;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.hero {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px 0;
+}
+
+.hero-text h1 {
+    font-size: 42px;
+    font-weight: 900;
+    line-height: 1.2;
+}
+
+.hero-text p {
+    font-size: 18px;
+    color: #666;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.cta-button {
+    background-color: #ff3d3d;
+    color: white;
+    border: none;
+    padding: 12px 26px;
+    border-radius: 12px;
+    font-size: 16px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.cta-button:hover {
+    background-color: #d83232;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 61, 61, 0.3);
+}
+
+.hero-img img {
+    border-radius: 50%;
+    width: 280px;
+    height: 280px;
+    object-fit: cover;
+}
+
+.timer-box {
+    margin-top: 20px;
+    background: #fff3e0;
+    padding: 16px;
+    border-radius: 12px;
+    color: #ff8c00;
+    font-weight: bold;
+    text-align: center;
+    width: 200px;
+    font-size: 15px;
+}
+
+.features .icon {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.device-tile {
+    background-color: white;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    text-align: center;
+    transition: 0.2s ease;
+    position: relative;
+    height: 100%;
+}
+
+.device-tile:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.device-icon {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.device-arrow {
+    position: absolute;
+    bottom: 15px;
+    right: 20px;
+    font-size: 20px;
+    color: #ff3d3d;
+}
+
+.device-info small {
+    color: #888;
+}
+
+/* ===== Анимация появления при скролле ===== */
+.scroll-hidden {
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+.scroll-show {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1), 
+                transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Вводный текст стили */
+.intro-text {
+    max-width: 700px;
+    margin: 40px auto 60px auto;
+    font-size: 20px;
+    color: #444;
+    line-height: 1.5;
+    text-align: center;
+    font-weight: 500;
+}
+
+.cta-block {
+display: block;
+background-color: #ff3d3d;
+color: white;
+border-radius: 16px;
+padding: 20px 30px;
+text-align: center;
+text-decoration: none;
+cursor: pointer;
+max-width: 600px;
+margin: 40px auto;
+transition: background-color 0.3s ease;
+}
+
+.cta-block:hover {
+background-color: #d83232;
+text-decoration: none;
+}
+
+.cta-block h3,
+.cta-block p {
+color: white;
+margin: 0 0 12px 0;
+font-weight: 600;
+}
+
+.cta-block h3 {
+font-size: 22px;
+}
+
+.cta-block p {
+font-size: 16px;
+}
+
+.cta-block .cta-button {
+display: inline-block;
+background-color: #fff;
+color: #ff3d3d;
+padding: 10px 24px;
+border-radius: 12px;
+font-weight: 600;
+font-size: 15px;
+transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.cta-block:hover .cta-button {
+background-color: #ffeaea;
+color: #d83232;
+}
+
+/* Стартовое состояние */
+.cta-block.scroll-hidden {
+opacity: 0;
+transform: translateY(50px);
+}
+
+/* Переход (анимация) */
+.cta-block {
+transition: opacity 0.5s ease-out 0.3s, transform 0.5s ease-out 0.3s;
+}
+
+/* Видимый блок */
+.cta-block.scroll-show {
+opacity: 1;
+transform: translateY(0);
+}
+body.dark-theme {
+background-color: #121212;
+color: #e0e0e0;
+}
+
+.dark-theme .hero-text h1,
+.dark-theme .hero-text p,
+.dark-theme .intro-text,
+.dark-theme .features h5,
+.dark-theme .features p,
+.dark-theme .device-info p,
+.dark-theme .device-info small {
+color: #e0e0e0;
+}
+
+.dark-theme .device-tile {
+background-color: #1e1e1e;
+box-shadow: 0 10px 20px rgba(255,255,255,0.05);
+}
+
+.dark-theme .device-arrow {
+color: #ff6b6b;
+}
+
+.dark-theme .timer-box {
+background: #2b2b2b;
+color: #ffb74d;
+}
+
+.dark-theme .cta-button {
+background-color: #ff3d3d;
+color: white;
+}
+
+.dark-theme .cta-button:hover {
+background-color: #d83232;
+box-shadow: 0 8px 20px rgba(255, 61, 61, 0.3);
+}
+
+.dark-theme .cta-block {
+background-color: #2c2c2c;
+color: white;
+}
+
+.dark-theme .cta-block h3,
+.dark-theme .cta-block p {
+color: white;
+}
+
+.dark-theme .cta-block .cta-button {
+background-color: #fff;
+color: #ff3d3d;
+}
+
+.dark-theme .cta-block:hover .cta-button {
+background-color: #ffeaea;
+color: #d83232;
+}
+
+
+
+
+
+/* === Общие стили (без изменений) === */
+/* (оставляем то, что было) */
+
+/* ===== Адаптивность ===== */
+@media (max-width: 991.98px) {
+.hero {
+flex-direction: column;
+padding: 40px 15px;
+}
+
+.hero-text, .hero-img {
+max-width: 100%;
+text-align: center;
+}
+
+.hero-text h1 {
+font-size: 32px;
+}
+
+.hero-text p {
+font-size: 16px;
+}
+
+.hero-img img {
+width: 200px;
+height: 200px;
+margin: 20px auto 0;
+}
+
+.cta-button {
+padding: 10px 22px;
+font-size: 14px;
+}
+}
+
+@media (max-width: 767.98px) {
+body {
+font-size: 14px;
+}
+
+.intro-text {
+font-size: 16px;
+margin: 30px 15px 50px 15px;
+}
+
+.features .icon {
+font-size: 24px;
+}
+
+.features .col-md-4 {
+margin-bottom: 30px;
+}
+
+.device-tile {
+padding: 15px;
+border-radius: 15px;
+}
+
+.device-icon {
+width: 45px;
+height: 45px;
+margin-bottom: 10px;
+}
+
+.device-tile h5 {
+font-size: 18px;
+}
+
+.device-info p {
+font-size: 14px;
+}
+
+.device-info small {
+font-size: 12px;
+}
+
+.device-arrow {
+font-size: 18px;
+bottom: 12px;
+right: 15px;
+}
+
+.cta-block {
+padding: 30px 15px;
+margin: 40px 15px 60px 15px;
+}
+
+.cta-block h3 {
+font-size: 24px;
+}
+
+.cta-block p {
+font-size: 16px;
+margin-bottom: 20px;
+}
+
+.cta-block a.cta-button {
+padding: 12px 30px;
+font-size: 14px;
+border-radius: 25px;
+}
+}
