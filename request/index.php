@@ -32,12 +32,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $descProblem = trim($_POST['desc_problem'] ?? '');
     $serviceId = intval($_POST['service'] ?? 0);
 
-    if (!$registerDate) $errors[] = "Дата регистрации заявки обязательна.";
+    if (!$whatDate) $errors[] = "Дата регистрации заявки обязательна.";
+    $today = new DateTime('today');
+    $maxDate = (clone $today)->modify('+2 months');
+    $date = DateTime::createFromFormat('Y-m-d', $whatDate);
+
+    if (!$date || $date < $today || $date > $maxDate) {
+        $errors[] = "Дата должна быть не раньше сегодня и не позже чем через 2 месяца.";
+    }
+
     if (!$descProblem) $errors[] = "Описание проблемы обязательно.";
     if ($serviceId <= 0) $errors[] = "Выберите услугу.";
 
     if (empty($errors)) {
-        $insert = $pdo->prepare("INSERT INTO Request (Register_data, What_date, Desc_problem, Users, Service) VALUES (?, ?, ?, ?, ?)");
+        $insert = $pdo->prepare("INSERT INTO Request (Register_date, What_date, Desc_problem, User_id, Service_id) VALUES (?, ?, ?, ?, ?)");
         $result = $insert->execute([$registerDate, $whatDate, $descProblem, $userId, $serviceId]);
         if ($result) {
             $success = true;
@@ -82,12 +90,14 @@ input[type="date"]::-webkit-calendar-picker-indicator {
             <div class="mb-3">
                 <label for="register_date" class="form-label">Дата регистрации заявки</label>
                 <input type="date" id="register_date" name="register_date" class="form-control" value="<?= date('Y-m-d') ?>" readonly>
+                <p class="text-muted">Система сама укажет сегодняшнюю дату</p>
             </div>
 
             <div class="mb-3">
                 <label class="form-label" for="what_date">
-                    Желаемая дата ремонта
-                    <input type="date" id="what_date" name="what_date" class="form-control date" value="<?= htmlspecialchars($_POST['what_date'] ?? '') ?>">
+                    Желаемая дата ремонта <span class="text-danger">*</span>
+                    <input type="date" id="what_date" name="what_date" class="form-control date" value="<?= htmlspecialchars($_POST['what_date'] ?? '') ?>" required>
+                    <p class="text-muted">Не раньше сегодня, не позже 2х месяцев</p>
                 </label>
             </div>
 
@@ -96,6 +106,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
             <div class="mb-3">
                 <label for="desc_problem" class="form-label">Описание проблемы <span class="text-danger">*</span></label>
                 <textarea id="desc_problem" name="desc_problem" class="form-control" rows="4" maxlength="155" required><?= htmlspecialchars($_POST['desc_problem'] ?? '') ?></textarea>
+                <p class="text-muted">Подробно опишите в чем заключается ваша проблема</p>
             </div>
 
             <div class="mb-3">

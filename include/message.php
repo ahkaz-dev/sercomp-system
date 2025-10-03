@@ -63,7 +63,7 @@ function showAlert($type, $message, $icon) {
 }
 
 if (isset($_SESSION["log-mess-s"])) {
-    showAlert('success', $_SESSION["log-mess-s"], $base_url.'{$base_url}/static/svg/circle-yes.svg');
+    showAlert('success', $_SESSION["log-mess-s"], $base_url.'/static/svg/circle-yes.svg');
     unset($_SESSION["log-mess-s"]);
 }
 

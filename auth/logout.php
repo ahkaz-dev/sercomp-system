@@ -9,6 +9,6 @@ if (isset($_SESSION["log-session"])) {
     session_start();
     $_SESSION['log-mess-warn'] = 'Вы вышли из аккаунта'; 
 
-    header("Location: /"); 
+    header("Location: ../index.php"); 
     exit();
 }

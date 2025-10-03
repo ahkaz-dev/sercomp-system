@@ -19,7 +19,7 @@ if (!is_numeric($requestId)) {
     exit;
 }
 
-$stmt = $pdo->prepare("SELECT * FROM Request WHERE Id = ? AND Users = ?");
+$stmt = $pdo->prepare("SELECT * FROM Request WHERE Id = ? AND User_id = ?");
 $stmt->execute([$requestId, $userId]);
 $request = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -42,19 +42,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $whatDate = trim($_POST['what_date'] ?? '');
     $descProblem = trim($_POST['desc_problem'] ?? '');
     $serviceId = intval($_POST['service'] ?? 0);
+    
+    if (!$whatDate) $errors[] = "Дата регистрации заявки обязательна.";
 
-    if (!$registerDate) {
-        $errors[] = "Дата регистрации обязательна.";
+    $today = new DateTime('today');
+    $maxDate = (clone $today)->modify('+2 months');
+    $date = DateTime::createFromFormat('Y-m-d', $whatDate);
+
+    if (!$date || $date < $today || $date > $maxDate) {
+        $errors[] = "Дата должна быть не раньше сегодня и не позже чем через 2 месяца.";
     }
-    if (!$descProblem) {
-        $errors[] = "Описание проблемы обязательно.";
-    }
-    if ($serviceId <= 0) {
-        $errors[] = "Выберите услугу.";
-    }
+
+    if (!$descProblem) $errors[] = "Описание проблемы обязательно.";
+    if ($serviceId <= 0) $errors[] = "Выберите услугу.";
 
     if (empty($errors)) {
-        $stmt = $pdo->prepare("UPDATE Request SET Register_data = ?, What_date = ?, Desc_problem = ?, Service = ? WHERE Id = ? AND Users = ?");
+        $stmt = $pdo->prepare("UPDATE Request SET Register_date = ?, What_date = ?, Desc_problem = ?, Service_id = ? WHERE Id = ? AND User_id = ?");
         $updated = $stmt->execute([$registerDate, $whatDate, $descProblem, $serviceId, $requestId, $userId]);
 
         if ($updated) {
@@ -94,22 +97,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php endif; ?>
 
     <form method="post" class="mt-3">
-<div class="mb-3">
-    <label for="register_date" class="form-label">Дата регистрации <span class="text-danger">*</span></label>
-    <input type="date" id="register_date" name="register_date" class="form-control"
-           value="<?= date('Y-m-d') ?>" readonly>
-</div>
+        <div class="mb-3">
+            <label for="register_date" class="form-label">Дата регистрации <span class="text-danger">*</span></label>
+            <input type="date" id="register_date" name="register_date" class="form-control"
+                value="<?= date('Y-m-d') ?>" readonly>
+                        <p class="text-muted">Система сама укажет сегодняшнюю дату</p>
+        </div>
 
 
         <div class="mb-3">
-            <label for="what_date" class="form-label">Желаемая дата ремонта</label>
-            <input type="date" id="what_date" name="what_date" class="form-control"
+            <label class="form-label" for="what_date">
+            Желаемая дата ремонта <span class="text-danger">*</span>
+            <input type="date" id="what_date" name="what_date" class="form-control date" required 
                    value="<?= htmlspecialchars($_POST['what_date'] ?? $request['What_date']) ?>">
+            <p class="text-muted">Не раньше сегодня, не позже 2х месяцев</p>
+            </label>
         </div>
+        
 
         <div class="mb-3">
             <label for="desc_problem" class="form-label">Описание проблемы <span class="text-danger">*</span></label>
             <textarea id="desc_problem" name="desc_problem" class="form-control" rows="4" maxlength="155" required><?= htmlspecialchars($_POST['desc_problem'] ?? $request['Desc_problem']) ?></textarea>
+                <p class="text-muted">Подробно опишите в чем заключается ваша проблема</p>
         </div>
 
         <div class="mb-3">
@@ -118,7 +127,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <option value="">-- Выберите услугу --</option>
                 <?php foreach ($services as $service): ?>
                     <option value="<?= $service['Id'] ?>"
-                        <?= (($_POST['service'] ?? $request['Service']) == $service['Id']) ? 'selected' : '' ?>>
+                        <?= (($_POST['service'] ?? $request['Service_id']) == $service['Id']) ? 'selected' : '' ?>>
                         <?= htmlspecialchars($service['Name']) ?>
                     </option>
                 <?php endforeach; ?>
@@ -126,7 +135,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
 
         <button type="submit" class="btn btn-primary">Сохранить изменения</button>
-        <a href="/my-request/" class="btn btn-secondary">Отмена</a>
+        <a href="." class="btn btn-secondary">Отмена</a>
     </form>
 </div>
 

@@ -74,7 +74,7 @@ $base_url = 'http://localhost/sercomp';
       <li><a class="dropdown-item" href="<?= $base_url ?>/admin/">Админ-панель</a></li>
       <li><a class="dropdown-item" href="<?= $base_url ?>/account/">Профиль</a></li>
       <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item" href="<?= $base_url ?>/auth/logout">Выход</a></li>
+      <li><a class="dropdown-item" href="<?= $base_url ?>/auth/logout.php">Выход</a></li>
     </ul>
   </div>
 
@@ -102,7 +102,7 @@ $base_url = 'http://localhost/sercomp';
       <li><a class="dropdown-item" href="<?= $base_url ?>/my-request/">Мои заявки</a></li>
       <li><a class="dropdown-item" href="<?= $base_url ?>/account/">Профиль</a></li>
       <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item" href="<?= $base_url ?>/auth/logout">Выход</a></li>
+      <li><a class="dropdown-item" href="<?= $base_url ?>/auth/logout.php">Выход</a></li>
     </ul>
   </div>
 
@@ -165,7 +165,7 @@ $base_url = 'http://localhost/sercomp';
       <li><a class="dropdown-item" href="admin/">Админ-панель</a></li>
       <li><a class="dropdown-item" href="<?= $base_url ?>/account/">Профиль</a></li>
       <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item" href="<?= $base_url ?>/auth/logout">Выход</a></li>
+      <li><a class="dropdown-item" href="<?= $base_url ?>/auth/logout.php">Выход</a></li>
     </ul>
   </div>
 
@@ -187,7 +187,7 @@ $base_url = 'http://localhost/sercomp';
       <li><a class="dropdown-item" href="<?= $base_url ?>/my-request/">Мои заявки</a></li>
       <li><a class="dropdown-item" href="<?= $base_url ?>/account/">Профиль</a></li>
       <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item" href="<?= $base_url ?>/auth/logout">Выход</a></li>
+      <li><a class="dropdown-item" href="<?= $base_url ?>/auth/logout.php">Выход</a></li>
     </ul>
   </div>
   <a href="<?= $base_url ?>/request/" class="btn btn-outline-dark w-100">Ремонт</a>

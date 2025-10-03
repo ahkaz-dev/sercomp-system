@@ -29,8 +29,8 @@ if (isset($_POST['login-button'])) {
                 $stmt = $pdo->prepare("
                     SELECT r.Id AS RequestId, m.Status
                     FROM Message m
-                    JOIN Request r ON m.Request = r.Id
-                    WHERE r.Users = ? AND m.Notified = 0
+                    JOIN Request r ON m.Request_id = r.Id
+                    WHERE r.User_id = ? AND m.Notified = 0
                     ORDER BY m.Created_at DESC
                     LIMIT 1
                 ");
@@ -51,7 +51,7 @@ if (isset($_POST['login-button'])) {
 
                 $_SESSION["log-mess-s"] = "Вы вошли в аккаунт";
                 echo '<script type="text/javascript">';
-                echo 'window.location.href = "/";';
+                echo 'window.location.href = "index.php";';
                 echo '</script>';
             } else {
                 $_SESSION['log-mess-e'] = "Ошибка ввода";

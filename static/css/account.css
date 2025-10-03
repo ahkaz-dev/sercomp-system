@@ -1,0 +1,249 @@
+
+.profile-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background: var(--card-bg, #fff);
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.user-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.user-info-row label {
+  min-width: 100px;
+  font-weight: 600;
+}
+
+.user-info-row span, .user-info-row input {
+  flex-grow: 1;
+  padding: 6px 10px;
+  background-color: #f0f0f0;
+  border-radius: 6px;
+  min-width: 150px;
+  border: 1px solid transparent;
+  transition: border-color 0.3s;
+  color: black;
+}
+
+.user-info-row input {
+  background-color: #fff;
+  border-color: #ccc;
+}
+
+.user-info-row input:focus {
+  outline: none;
+  border-color: var(--primary, #0066ff);
+}
+
+.user-info-row button {
+  background-color: var(--button-bg, #0066ff);
+  color: var(--button-text, #fff);
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  min-width: 90px;
+}
+
+.user-info-row button:hover {
+  background-color: #0052cc;
+}
+
+.status {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.status-value {
+  font-weight: bold;
+}
+
+.tooltip-icon {
+  display: inline-block;
+  margin-left: 8px;
+  width: 18px;
+  height: 18px;
+  background-color: var(--primary, #0066ff);
+  color: #fff;
+  font-size: 13px;
+  line-height: 18px;
+  text-align: center;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+}
+
+.tooltip-text {
+  visibility: hidden;
+  background-color: var(--primary, #0066ff);
+  color: #fff;
+  text-align: left;
+  padding: 10px;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  bottom: 140%;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 220px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 13px;
+}
+
+.tooltip-icon:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+.order-history {
+  margin-top: 20px;
+  list-style-type: none;
+  padding: 0;
+}
+
+.order-history li {
+  background: var(--bg-color, #f4f4f4);
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  border-left: 5px solid var(--primary, #0066ff);
+  border-radius: 8px;
+}
+
+
+
+.delete-btn {
+  margin-top: 40px;
+  background-color: #e03e2f;
+  border: none;
+  color: white;
+  padding: 10px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.btn-primary {
+  margin-top: 40px;
+  border: none;
+  color: white;
+  background-color: #3391ff;
+  padding: 10px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.delete-btn:hover {
+  background-color: #b73024;
+}
+.modal {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 999;
+}
+
+.modal.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 30px 25px;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 420px;
+  text-align: center;
+  position: relative;
+  transform: translateY(-30px);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.modal.show .modal-content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.modal-icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.modal-content h3 {
+  margin-top: 0;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.modal-content p {
+  font-size: 16px;
+  margin-bottom: 25px;
+  color: #444;
+}
+
+
+.confirm {
+  background-color: #e03e2f;
+  color: #fff;
+}
+
+.confirm:hover {
+  background-color: #c03527;
+}
+
+.cancel {
+  background-color: #ccc;
+  color: #333;
+}
+
+.cancel:hover {
+  background-color: #bbb;
+}
+
+
+@media (max-width: 600px) {
+  .user-info-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .user-info-row button {
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  .status {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .tooltip-text {
+    min-width: 100%;
+    left: 0;
+    transform: none;
+  }
+    .modal-content {
+    padding: 20px;
+  }
+}

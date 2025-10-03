@@ -51,21 +51,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <section class="py-5">
   <div class="container">
-    <h2>Нам доверяют</h2>
+    <h2 class="mb-4">Нам доверяют</h2>
     <div class="row g-4">
       <?php
-      $stmt = $pdo->query("SELECT * FROM `user_comment` WHERE Approved = 1 ORDER BY Id DESC LIMIT 6");
+      $stmt = $pdo->query("SELECT * FROM `user_comment` ORDER BY `Date` DESC");
       if ($stmt && $stmt->rowCount() > 0) {
           foreach ($stmt as $review) {
               $rate = (int)$review['Rate'];
               $stars = str_repeat('★', $rate) . str_repeat('☆', 5 - $rate);
               $user = htmlspecialchars($review['Creater']);
-              $comment =htmlspecialchars($review['Comment']);
-              echo "<div class='col-md-6'>";
-              echo "<article class='review-card shadow-sm' tabindex='0'>";
-              echo "<h5>{$user} <span class='rating-stars' aria-label='Оценка {$rate} из 5'>{$stars}</span></h5>";
-              echo "<p>{$comment}</p>";
-              echo "</article>";
+              $comment = htmlspecialchars($review['Comment']);
+              $date = date('d.m.Y', strtotime($review['Date']));
+              
+              echo "<div class='col-md-6 col-lg-4'>";
+              echo "  <article class='card h-100 shadow-sm border-0'>";
+              echo "    <div class='card-body'>";
+              echo "      <h5 class='card-title mb-1'>{$user}</h5>";
+              echo "      <div class='text-warning mb-2' aria-label='Оценка {$rate} из 5'>{$stars}</div>";
+              echo "      <p class='card-text'>{$comment}</p>";
+              echo "      <small class='text-muted'>{$date}</small>";
+              echo "    </div>";
+              echo "  </article>";
               echo "</div>";
           }
       } else {
@@ -75,6 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
   </div>
 </section>
+
 
 
 <section class="py-5">
