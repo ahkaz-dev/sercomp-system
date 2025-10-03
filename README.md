@@ -60,10 +60,11 @@ sercomp/
 
 ## 🖼 Скриншоты
 
-| Главная страница | Личный кабинет | Панель администратора |
-|------------------|----------------|------------------------|
-| ![Главная](screenshots/home.png) | ![Кабинет](screenshots/account.png) | ![Админка](screenshots/admin.png) |
+| Главная страница | Услуги | Отзывы |
+|-----------------|----------------|----------------|
+| ![Главная](https://raw.githubusercontent.com/ahkaz-dev/sercomp-system/main/static/img/screens/index.png) | ![Услуги](https://raw.githubusercontent.com/ahkaz-dev/sercomp-system/main/static/img/screens/our-service.png) | ![Отзывы](https://raw.githubusercontent.com/ahkaz-dev/sercomp-system/main/static/img/screens/review.png) 
 
-| Создание заявки | Список заявок | Отзывы |
-|-----------------|---------------|--------|
-| ![Новая заявка](screenshots/request.png) | ![Заявки](screenshots/requests.png) | ![Отзывы](screenshots/review.png) |
+| Мои заявки |
+|-----------------|
+|  ![Мои заявки](https://raw.githubusercontent.com/ahkaz-dev/sercomp-system/main/static/img/screens/my-request.png) |
+
