@@ -68,3 +68,6 @@ sercomp/
 |-----------------|
 |  ![Мои заявки](https://raw.githubusercontent.com/ahkaz-dev/sercomp-system/main/static/img/screens/my-request.png) |
 
+| Админ панель | Все заявки | Заявка |
+|-----------------|----------------|----------------|
+| ![Админ панель](https://raw.githubusercontent.com/ahkaz-dev/sercomp-system/main/static/img/screens/admin.png) | ![Все заявки](https://raw.githubusercontent.com/ahkaz-dev/sercomp-system/main/static/img/screens/all-requests.png) | ![Заявка](https://raw.githubusercontent.com/ahkaz-dev/sercomp-system/main/static/img/screens/request.png) 

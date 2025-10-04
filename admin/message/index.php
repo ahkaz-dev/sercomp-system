@@ -194,8 +194,8 @@ if (isset($_SESSION["log-session"]) && isset($_SESSION['log-session-data'])):
         $requestStmt = $pdo->query("
             SELECT r.Id, u.Name AS UserName, s.Name AS ServiceName
             FROM Request r
-            LEFT JOIN Users u ON r.Users = u.Id
-            LEFT JOIN Service s ON r.Service = s.Id
+            LEFT JOIN Users u ON r.User_id = u.Id
+            LEFT JOIN Service s ON r.Service_id = s.Id
             ORDER BY r.Id DESC
         ");
         $requests = $requestStmt->fetchAll(PDO::FETCH_ASSOC);
@@ -203,9 +203,9 @@ if (isset($_SESSION["log-session"]) && isset($_SESSION['log-session-data'])):
         // Запрос с фильтрами
         $sql = "SELECT m.*, r.Desc_problem, u.Name AS UserName, s.Name AS ServiceName
                 FROM Message m
-                LEFT JOIN Request r ON m.Request = r.Id
-                LEFT JOIN Users u ON r.Users = u.Id
-                LEFT JOIN Service s ON r.Service = s.Id
+                LEFT JOIN Request r ON m.Request_id = r.Id
+                LEFT JOIN Users u ON r.User_id = u.Id
+                LEFT JOIN Service s ON r.Service_id = s.Id
                 WHERE 1=1";
 
         $params = [];
@@ -226,7 +226,7 @@ if (isset($_SESSION["log-session"]) && isset($_SESSION['log-session-data'])):
         }
 
         if (!empty($_GET['request'])) {
-            $sql .= " AND m.Request = :request";
+            $sql .= " AND m.Request_id = :request";
             $params['request'] = $_GET['request'];
         }
 
@@ -254,7 +254,7 @@ if (isset($_SESSION["log-session"]) && isset($_SESSION['log-session-data'])):
     <div class="mb-4">
 <form method="get" class="d-flex flex-wrap align-items-center gap-2 mb-4">
 
-    <a href="<?= $base_url ?>/admin/message/dynamic/message" class="btn btn-primary d-flex align-items-center gap-1">
+    <a href="<?= $base_url ?>/admin/message/dynamic/message.php" class="btn btn-primary d-flex align-items-center gap-1">
         <i class="bi bi-plus-circle"></i> Добавить сообщение
     </a>
 
@@ -285,7 +285,7 @@ if (isset($_SESSION["log-session"]) && isset($_SESSION['log-session-data'])):
     </select>
 
     <button type="submit" class="btn btn-link px-3">Фильтровать</button>
-    <a href="/admin/message/" class="btn btn-link px-3 text-secondary">Сбросить</a>
+    <a href="<?=$base_url?>/admin/message/" class="btn btn-link px-3 text-secondary">Сбросить</a>
 
 </form>
 
@@ -308,12 +308,12 @@ if (isset($_SESSION["log-session"]) && isset($_SESSION['log-session-data'])):
                             <p class="card-text"><?= nl2br(htmlspecialchars($message["Text"])) ?></p>
                             <small class="text-muted">Дата создания: <?= htmlspecialchars($message["Created_at"]) ?></small><br>
                             <small class="text-muted">
-                                Заявка: <?= "[" . htmlspecialchars($message["Request"]) . "] " ?>
+                                Заявка: <?= "[" . htmlspecialchars($message["Request_id"]) . "] " ?>
                                 <?= htmlspecialchars($message["Desc_problem"] ?? '—') ?>
                             </small>
                         </div>
                         <div class="card-footer bg-transparent border-0 pt-0 pb-3">
-                            <a href="<?= $base_url ?>/admin/message/dynamic/message?id=<?= htmlspecialchars($message["Id"]) ?>" class="btn btn-outline-primary w-100">
+                            <a href="<?= $base_url ?>/admin/message/dynamic/message.php?id=<?= htmlspecialchars($message["Id"]) ?>" class="btn btn-outline-primary w-100">
                                 <i class="bi bi-pencil"></i> Редактировать
                             </a>
                         </div>

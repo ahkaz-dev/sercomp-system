@@ -69,7 +69,7 @@ if (isset($_SESSION["log-session"]) && isset($_SESSION['log-session-data'])):
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete'])) {
-            $stmt = $pdo->prepare("UPDATE Request SET Users = NULL WHERE Users = ?");
+            $stmt = $pdo->prepare("UPDATE Request SET User_id = NULL WHERE User_id = ?");
             $stmt->execute([$Id]);
 
             $stmt = $pdo->prepare("DELETE FROM Users WHERE Id = :Id");

@@ -39,7 +39,7 @@ if (isset($_SESSION["log-session"]) && isset($_SESSION['log-session-data'])):
 
 
         // Получаем сообщение, связанное с этим Request
-        $message_query = $pdo->prepare("SELECT * FROM Message WHERE Request = :RequestId ORDER BY Created_at DESC LIMIT 1");
+        $message_query = $pdo->prepare("SELECT * FROM Message WHERE Id = :RequestId ORDER BY Created_at DESC LIMIT 1");
         $message_query->execute(['RequestId' => $Id]);
         $message_result = $message_query->fetch(PDO::FETCH_ASSOC);
 
@@ -113,7 +113,7 @@ if (isset($_SESSION["log-session"]) && isset($_SESSION['log-session-data'])):
 
             if (validate_request_data($errors, $register_data, $what_date, $desc_problem, $users, $service)) {
                 // Проверка на дубликат
-                $stmt = $pdo->prepare("SELECT * FROM Request WHERE Register_data = :register_data AND What_date = :what_date AND Desc_problem = :desc_problem AND Users = :users AND Service = :service AND Id != :id");
+                $stmt = $pdo->prepare("SELECT * FROM Request WHERE Register_date = :register_data AND What_date = :what_date AND Desc_problem = :desc_problem AND Users = :users AND Service_id = :service AND Id != :id");
                 $stmt->execute([
                     'register_data' => $register_data,
                     'what_date' => $what_date,
@@ -131,7 +131,7 @@ if (isset($_SESSION["log-session"]) && isset($_SESSION['log-session-data'])):
                 }
 
                 // Обновление данных
-                $stmt = $pdo->prepare("UPDATE Request SET Register_data = ?, What_date = ?, Desc_problem = ?, Users = ?, Service = ? WHERE Id = ?");
+                $stmt = $pdo->prepare("UPDATE Request SET Register_date = ?, What_date = ?, Desc_problem = ?, Users = ?, Service_id = ? WHERE Id = ?");
                 if ($stmt->execute([$register_data, $what_date, $desc_problem, $users, $service, $id])) {
                     $_SESSION["log-mess-s"] = "Заявка успешно обновлена";
                     echo "<script>window.location.href = '". $base_url ."/admin/request/';</script>";
@@ -151,7 +151,7 @@ if (isset($_SESSION["log-session"]) && isset($_SESSION['log-session-data'])):
 
             if (validate_request_data($errors, $register_data, $what_date, $desc_problem, $users, $service)) {
                 // Проверка на дубликат
-                $stmt = $pdo->prepare("SELECT * FROM Request WHERE Register_data = :register_data AND What_date = :what_date AND Desc_problem = :desc_problem AND Users = :users AND Service = :service");
+                $stmt = $pdo->prepare("SELECT * FROM Request WHERE Register_date = :register_data AND What_date = :what_date AND Desc_problem = :desc_problem AND Users = :users AND Service_id = :service");
                 $stmt->execute([
                     'register_data' => $register_data,
                     'what_date' => $what_date,
@@ -168,7 +168,7 @@ if (isset($_SESSION["log-session"]) && isset($_SESSION['log-session-data'])):
                 }
 
                 // Добавление новой записи
-                $stmt = $pdo->prepare("INSERT INTO Request (Register_data, What_date, Desc_problem, Users, Service) VALUES (?, ?, ?, ?, ?)");
+                $stmt = $pdo->prepare("INSERT INTO Request (Register_date, What_date, Desc_problem, User_id, Service_id) VALUES (?, ?, ?, ?, ?)");
                 if ($stmt->execute([$register_data, $what_date, $desc_problem, $users, $service])) {
                     $_SESSION["log-mess-s"] = "Заявка успешно добавлена";
                     echo "<script>window.location.href = '". $base_url ."/admin/request/';</script>";
@@ -203,7 +203,7 @@ if (isset($_SESSION["log-session"]) && isset($_SESSION['log-session-data'])):
     </ol>
     </nav>
     <?php if ($request_query_result): ?>
-    <title>Заявка: <?= htmlspecialchars($request_query_result["Register_data"]) ?></title>
+    <title>Заявка: <?= htmlspecialchars($request_query_result["Register_date"]) ?></title>
     <form method="post">
         <div class="row">
             <div class="form-container">
@@ -217,7 +217,7 @@ if (isset($_SESSION["log-session"]) && isset($_SESSION['log-session-data'])):
                         <label for="register_data" class="form-label">Дата регистрации</label>
                         <input type="text" class="form-control <?= $errors['register_data'] ? 'is-invalid' : '' ?>" id="register_data"
                                name="register_data" maxlength="55" required
-                               value="<?= htmlspecialchars($request_query_result["Register_data"]) ?>">
+                               value="<?= htmlspecialchars($request_query_result["Register_date"]) ?>">
                         <div class="invalid-feedback"><?= $errors['register_data'] ?></div>
                     </div>
                     <div class="mb-3">
@@ -229,9 +229,9 @@ if (isset($_SESSION["log-session"]) && isset($_SESSION['log-session-data'])):
                     </div>
                     <div class="mb-3">
                         <label for="desc_problem" class="form-label">Описание проблемы</label>
-                        <input type="text" class="form-control <?= $errors['desc_problem'] ? 'is-invalid' : '' ?>" id="desc_problem"
+                        <textarea class="form-control <?= $errors['desc_problem'] ? 'is-invalid' : '' ?>" id="desc_problem"
                                name="desc_problem" maxlength="155" required
-                               value="<?= htmlspecialchars($request_query_result["Desc_problem"]) ?>">
+                               ><?= htmlspecialchars($request_query_result["Desc_problem"]) ?></textarea>
                         <div class="invalid-feedback"><?= $errors['desc_problem'] ?></div>
                     </div>
                     <div class="mb-3">
@@ -242,7 +242,7 @@ if (isset($_SESSION["log-session"]) && isset($_SESSION['log-session-data'])):
                             $users_query = $pdo->query("SELECT Id, Name FROM Users");
                             while ($user = $users_query->fetch(PDO::FETCH_ASSOC)):
                             ?>
-                                <option value="<?= $user['Id'] ?>" <?= ($user['Id'] == $request_query_result['Users']) ? 'selected' : '' ?>><?= htmlspecialchars($user['Name']) ?></option>
+                                <option value="<?= $user['Id'] ?>" <?= ($user['Id'] == $request_query_result['User_id']) ? 'selected' : '' ?>><?= htmlspecialchars($user['Name']) ?></option>
                             <?php endwhile; ?>
                         </select>
                         <div class="invalid-feedback"><?= $errors['users'] ?></div>
@@ -255,7 +255,7 @@ if (isset($_SESSION["log-session"]) && isset($_SESSION['log-session-data'])):
                             $services_query = $pdo->query("SELECT Id, Name FROM Service");
                             while ($service_item = $services_query->fetch(PDO::FETCH_ASSOC)):
                             ?>
-                                <option value="<?= $service_item['Id'] ?>" <?= ($service_item['Id'] == $request_query_result['Service']) ? 'selected' : '' ?>><?= htmlspecialchars($service_item['Name']) ?></option>
+                                <option value="<?= $service_item['Id'] ?>" <?= ($service_item['Id'] == $request_query_result['Service_id']) ? 'selected' : '' ?>><?= htmlspecialchars($service_item['Name']) ?></option>
                             <?php endwhile; ?>
                         </select>
                         <div class="invalid-feedback"><?= $errors['service'] ?></div>

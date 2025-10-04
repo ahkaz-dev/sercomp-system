@@ -180,7 +180,7 @@ if ($_POST['action'] === 'update_profile') {
       <?php foreach ($requests as $r): ?>
         <li>
           №<?= $r['Id'] ?> — <?= htmlspecialchars($r['ServiceName']) ?>
-          — <?= htmlspecialchars($r['Register_data']) ?>
+          — <?= htmlspecialchars($r['Register_date']) ?>
         </li>
       <?php endforeach; ?>
     <?php else: ?>

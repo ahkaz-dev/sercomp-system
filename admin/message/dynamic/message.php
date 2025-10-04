@@ -38,13 +38,13 @@ if (isset($_SESSION["log-session"]) && isset($_SESSION['log-session-data']) && $
 // Получаем заявки с JOIN для вывода связанной информации
 $requestStmt = $pdo->query("
     SELECT 
-        r.Id AS RequestId, 
+        r.Id AS Request_id, 
         u.Name AS UserName, 
         s.Name AS ServiceName, 
         r.Desc_problem
     FROM Request r
-    LEFT JOIN Users u ON r.Users = u.Id
-    LEFT JOIN Service s ON r.Service = s.Id
+    LEFT JOIN Users u ON r.User_id = u.Id
+    LEFT JOIN Service s ON r.Service_id = s.Id
     ORDER BY r.Id DESC
 ");
 $requests = $requestStmt->fetchAll(PDO::FETCH_ASSOC);
@@ -85,7 +85,7 @@ $requests = $requestStmt->fetchAll(PDO::FETCH_ASSOC);
             }
         }
 
-    $valid_request_ids = array_column($requests, 'RequestId');
+    $valid_request_ids = array_column($requests, 'Request_id');
     if (!in_array((int)$request, $valid_request_ids)) {
         $errors['request'] = "Выберите корректную заявку.";
         $valid = false;
@@ -123,11 +123,11 @@ $requests = $requestStmt->fetchAll(PDO::FETCH_ASSOC);
 
             if (validate_message_data($errors, $status, $text, $created_at, $request, $statuses, $requests)) {
                 if (isset($_POST['update'])) {
-                    $stmt = $pdo->prepare("UPDATE Message SET Status = ?, Text = ?, Created_at = ?, Request = ? WHERE Id = ?");
+                    $stmt = $pdo->prepare("UPDATE Message SET Status = ?, Text = ?, Created_at = ?, Request_id = ? WHERE Id = ?");
                     $stmt->execute([$status, $text, $created_at, $request, $Id]);
                     $_SESSION["log-mess-s"] = "Сообщение обновлено";
                 } else {
-                    $stmt = $pdo->prepare("INSERT INTO Message (Status, Text, Created_at, Request) VALUES (?, ?, ?, ?)");
+                    $stmt = $pdo->prepare("INSERT INTO Message (Status, Text, Created_at, Request_id) VALUES (?, ?, ?, ?)");
                     $stmt->execute([$status, $text, $created_at, $request]);
                     $_SESSION["log-mess-s"] = "Сообщение добавлено";
                 }
@@ -210,8 +210,8 @@ $requests = $requestStmt->fetchAll(PDO::FETCH_ASSOC);
         <?php
         $selected_request = $message["Request"] ?? ($_SESSION['form_data']['request'] ?? '');
         foreach ($requests as $req): ?>
-            <option value="<?= htmlspecialchars($req['RequestId']) ?>" <?= ($selected_request == $req['RequestId']) ? 'selected' : '' ?>>
-                <?= htmlspecialchars("[" . $req['RequestId'] . "]") . " — Услуга: " . ($req['ServiceName'] ?? 'неизвестна') ?>
+            <option value="<?= htmlspecialchars($req['Request_id']) ?>" <?= ($selected_request == $req['Request_id']) ? 'selected' : '' ?>>
+                <?= htmlspecialchars("[" . $req['Request_id'] . "]") . " — Услуга: " . ($req['ServiceName'] ?? 'неизвестна') ?>
             </option>
         <?php endforeach; ?>
     </select>

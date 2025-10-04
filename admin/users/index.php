@@ -264,7 +264,7 @@ body.dark-theme .text-secondary {
     <form method="GET">
         <div class="row g-3 align-items-center">
             <div class="col-lg-2 col-md-4">
-                <a class="btn btn-mb-primary w-100" href="<?= $base_url ?>/admin/users/dynamic/users">
+                <a class="btn btn-mb-primary w-100" href="<?= $base_url ?>/admin/users/dynamic/users.php">
                     <i class="bi bi-person-plus-fill me-1"></i> Добавить запись
                 </a>
             </div>
@@ -290,7 +290,7 @@ body.dark-theme .text-secondary {
                 </button>
             </div>
             <div class="col-lg-1 col-md-2">
-                <a href="/admin/users/" class="btn btn-outline-secondary w-100">
+                <a href="<?=$base_url?>/admin/users/" class="btn btn-outline-secondary w-100">
                     <i class="bi bi-x-circle"></i> Сбросить
                 </a>
             </div>
@@ -342,7 +342,7 @@ body.dark-theme .text-secondary {
                             <div class="mb-2"><span class="fw-semibold">Пароль:</span> <?= substr(htmlspecialchars($user["Password"]), 0, 8) ?>...</div>
                         </div>
                         <div class="card-footer bg-transparent border-0 pt-0 pb-3">
-                            <a href="<?= $base_url ?>/admin/users/dynamic/users?id=<?= htmlspecialchars($user["Id"])?>" class="btn btn-outline-primary w-100">
+                            <a href="<?= $base_url ?>/admin/users/dynamic/users.php?id=<?= htmlspecialchars($user["Id"])?>" class="btn btn-outline-primary w-100">
                                 <i class="bi bi-pencil"></i> Редактировать
                             </a>
                         </div>

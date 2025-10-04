@@ -28,151 +28,6 @@
     }
 </style>
 
-<style>
-/* Тёмная тема */
-body.dark-theme {
-  background-color: #121212;
-  color: #e0e0e0;
-  transition: background-color 0.4s ease, color 0.4s ease;
-}
-
-/* Контейнер */
-body.dark-theme .container {
-  background-color: transparent;
-}
-
-/* Навигация (хлебные крошки) */
-body.dark-theme .breadcrumb {
-  background-color: #1f1f1f;
-  border-radius: 6px;
-  padding: 8px 12px;
-  margin-bottom: 20px;
-}
-
-body.dark-theme .breadcrumb-item a {
-  color: #64b5f6;
-}
-
-body.dark-theme .breadcrumb-item.active {
-  color: #e0e0e0;
-  font-weight: 600;
-}
-
-/* Поля фильтра (input, select) */
-body.dark-theme input.form-control,
-body.dark-theme select.form-control {
-  background-color: #1f1f1f;
-  border: 1px solid #444;
-  color: #eee;
-  transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
-}
-
-body.dark-theme input.form-control::placeholder {
-  color: #999;
-}
-
-body.dark-theme input.form-control:focus,
-body.dark-theme select.form-control:focus {
-  background-color: #292929;
-  border-color: #64b5f6;
-  color: #fff;
-  outline: none;
-  box-shadow: 0 0 5px #64b5f6;
-}
-
-/* Кнопки */
-body.dark-theme .btn-outline-primary {
-  color: #64b5f6;
-  border-color: #64b5f6;
-  background-color: transparent;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-body.dark-theme .btn-outline-primary:hover,
-body.dark-theme .btn-outline-primary:focus {
-  background-color: #64b5f6;
-  color: #121212;
-  border-color: #64b5f6;
-}
-
-body.dark-theme .btn-outline-secondary {
-  color: #888;
-  border-color: #888;
-  background-color: transparent;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-body.dark-theme .btn-outline-secondary:hover,
-body.dark-theme .btn-outline-secondary:focus {
-  background-color: #555;
-  color: #eee;
-  border-color: #555;
-}
-
-/* Карточки */
-body.dark-theme .card {
-  background-color: #1f1f1f;
-  border: 1px solid #333;
-  color: #ddd;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  box-shadow: 0 1px 5px rgba(0,0,0,0.5);
-}
-
-body.dark-theme .card:hover {
-  background-color: #292929;
-  color: #fff;
-}
-
-/* Карточка — footer */
-body.dark-theme .card-footer {
-  background-color: transparent;
-  border-top: 1px solid #333;
-}
-
-/* Текст */
-body.dark-theme p,
-body.dark-theme strong,
-body.dark-theme .text-muted {
-  color: #cfcfcf;
-}
-
-body.dark-theme .text-muted {
-  color: #999999 !important;
-}
-
-/* Информационные алерты */
-body.dark-theme .alert-info {
-  background-color: #2c3e50;
-  color: #a0c4ff;
-  border-color: #3a5068;
-  box-shadow: none;
-}
-
-/* Горизонтальная линия */
-body.dark-theme hr {
-  border-color: #444;
-}
-
-/* Значки, бейджи */
-body.dark-theme .badge.bg-info {
-  background-color: #64b5f6;
-  color: #121212;
-}
-
-/* Ссылки */
-body.dark-theme a {
-  color: #64b5f6;
-  text-decoration: none;
-}
-
-body.dark-theme a:hover,
-body.dark-theme a:focus {
-  color: #90caf9;
-  text-decoration: underline;
-}
-
-</style>
-
 <?php 
 if (isset($_SESSION["log-session"]) && isset($_SESSION['log-session-data'])): 
     if ($_SESSION['log-session-data']["Status"] === "Администратор"):
@@ -180,7 +35,7 @@ if (isset($_SESSION["log-session"]) && isset($_SESSION['log-session-data'])):
         $sql = "
         SELECT 
             r.Id AS request_id,
-            r.Register_data AS request_date,
+            r.Register_date AS request_date,
             r.What_date AS request_what_date,
             r.Desc_problem AS request_description,
 
@@ -199,17 +54,17 @@ if (isset($_SESSION["log-session"]) && isset($_SESSION['log-session-data'])):
             m.Created_at AS message_created
 
         FROM Request r
-        LEFT JOIN Users u ON r.Users = u.Id
-        LEFT JOIN Service s ON r.Service = s.Id
+        LEFT JOIN Users u ON r.User_id = u.Id
+        LEFT JOIN Service s ON r.Service_id = s.Id
         LEFT JOIN (
             SELECT m1.*
             FROM Message m1
             JOIN (
-                SELECT Request, MAX(Created_at) AS MaxDate
+                SELECT Request_id, MAX(Created_at) AS MaxDate
                 FROM Message
-                GROUP BY Request
-            ) m2 ON m1.Request = m2.Request AND m1.Created_at = m2.MaxDate
-        ) m ON r.Id = m.Request
+                GROUP BY Request_id
+            ) m2 ON m1.Request_id = m2.Request_id AND m1.Created_at = m2.MaxDate
+        ) m ON r.Id = m.Request_id
         WHERE 1=1
         ";
 
@@ -243,7 +98,7 @@ if (isset($_SESSION["log-session"]) && isset($_SESSION['log-session-data'])):
         <form method="get">
             <div class="row g-3 align-items-center">
                 <div class="col-md-3">
-                    <a class="btn btn-mb-primary w-100" href="<?= $base_url ?>/admin/request/dynamic/request">
+                    <a class="btn btn-mb-primary w-100" href="<?= $base_url ?>/admin/request/dynamic/request.php">
                         <i class="bi bi-plus-circle me-1"></i> Добавить заявку
                     </a>
                 </div>
@@ -254,7 +109,7 @@ if (isset($_SESSION["log-session"]) && isset($_SESSION['log-session-data'])):
                     <button type="submit" class="btn btn-outline-primary w-100">Фильтр</button>
                 </div>
                 <div class="col-md-2">
-                    <a href="/admin/request/" class="btn btn-outline-secondary w-100">Сброс</a>
+                    <a href="<?=$base_url?>/admin/request/" class="btn btn-outline-secondary w-100">Сброс</a>
                 </div>
             </div>
         </form>
@@ -299,7 +154,7 @@ if (isset($_SESSION["log-session"]) && isset($_SESSION['log-session-data'])):
                             <?php endif; ?>
                         </div>
                         <div class="card-footer bg-transparent border-0 pt-0 pb-3">
-                            <a href="<?= $base_url ?>/admin/request/dynamic/request?id=<?= urlencode($request["request_id"]) ?>" class="btn btn-outline-primary w-100">
+                            <a href="<?= $base_url ?>/admin/request/dynamic/request.php?id=<?= urlencode($request["request_id"]) ?>" class="btn btn-outline-primary w-100">
                                 <i class="bi bi-pencil"></i> Редактировать заявку
                             </a>
                         </div>
