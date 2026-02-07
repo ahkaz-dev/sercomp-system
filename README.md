@@ -1,73 +1,72 @@
 # SerComp
 
-Веб-приложение для автоматизации приёма и обработки заявок на ремонт офисной техники.  
-Проект написан на нативном PHP, решающий реальные бизнес-задачи сервисной организации.
+A web application for automating the reception and processing of service requests for office equipment repair.  
+The project is written in native PHP and solves real-world business tasks for a service organization.
+[translated this  file to russian](./README_RU.md) 
+---
+
+## 🚀 Features
+- User registration and personal account  
+- Creation and editing of repair requests  
+- Real-time tracking of request status  
+- Administrator panel for managing users, services, and requests  
+- Review and comment system  
 
 ---
 
-## 🚀 Возможности
-- Регистрация пользователей и личный кабинет  
-- Создание и редактирование заявок на ремонт  
-- Отслеживание статуса заявок в реальном времени  
-- Панель администратора для управления пользователями, услугами и заявками  
-- Система отзывов и комментариев  
+## 🛠 Technologies
+- PHP — core application logic  
+- MySQL — data storage  
+- HTML/CSS/JS — client-side interface  
 
 ---
 
-## 🛠 Технологии
-- PHP — основная логика приложения  
-- MySQL — хранение данных  
-- HTML/CSS/JS — клиентская часть  
-
----
-
-## 📂 Структура проекта
+## 📂 Project Structure
 ```
 sercomp/
-├── account/       # Личный кабинет 
-├── admin/         # Панель администратора
-├── auth/          # Авторизация 
-├── db/            # Подключение к базе 
-├── include/       # Общие шаблоны 
-├── request/       # Управление заявками
-├── review/        # Отзывы 
-└── static/        # Статические файлы 
+├── account/       # User dashboard
+├── admin/         # Admin panel
+├── auth/          # Authentication
+├── db/            # Database connection
+├── include/       # Shared templates
+├── request/       # Request management
+├── review/        # Reviews
+└── static/        # Static files
 ```
 ---
 
-## ⚙️ Установка и запуск
-1. Клонировать репозиторий:
-     git clone https://github.com/ahkaz-dev/sercomp.git
-2. Настроить веб-сервер (Apache/Nginx) и PHP (>=7.4).
+## ⚙️ Installation and Launch
+1. Clone the repository:
+     git clone [https://github.com/ahkaz-dev/sercomp.git](https://github.com/ahkaz-dev/sercomp.git)
+2. Configure your web server (Apache/Nginx) and PHP (>=7.4).
 
-3. Создать базу данных MySQL и импортировать запросы (mainsql.txt).
+3. Create a MySQL database and import the queries from **mainsql.txt**.
 
-4. В файле db/connect.php указать свои параметры подключения.
+4. Specify your database connection parameters in **db/connect.php**.
 
-5. Перейти по адресу проекта в браузере.
-
----
-
-## 🔒 Безопасность
-
-- Проверка и фильтрация входных данных
-
-- Защита от XSS и SQL-инъекций
-
-- Разграничение прав доступа
+5. Open the project in your browser.
 
 ---
 
-## 🖼 Скриншоты
+## 🔒 Security
 
-| Главная страница | Услуги | Отзывы |
+- Input validation and sanitization  
+- Protection against XSS and SQL injection  
+- Access control and user permissions  
+
+---
+
+## 🖼 Screenshots
+
+| Home Page | Services | Reviews |
 |-----------------|----------------|----------------|
-| ![Главная](https://raw.githubusercontent.com/ahkaz-dev/sercomp-system/main/static/img/screens/index.png) | ![Услуги](https://raw.githubusercontent.com/ahkaz-dev/sercomp-system/main/static/img/screens/our-service.png) | ![Отзывы](https://raw.githubusercontent.com/ahkaz-dev/sercomp-system/main/static/img/screens/review.png) 
+| ![Home](https://raw.githubusercontent.com/ahkaz-dev/sercomp-system/main/static/img/screens/index.png) | ![Services](https://raw.githubusercontent.com/ahkaz-dev/sercomp-system/main/static/img/screens/our-service.png) | ![Reviews](https://raw.githubusercontent.com/ahkaz-dev/sercomp-system/main/static/img/screens/review.png) |
 
-| Мои заявки |
+| My Requests |
 |-----------------|
-|  ![Мои заявки](https://raw.githubusercontent.com/ahkaz-dev/sercomp-system/main/static/img/screens/my-request.png) |
+|  ![My Requests](https://raw.githubusercontent.com/ahkaz-dev/sercomp-system/main/static/img/screens/my-request.png) |
 
-| Админ панель | Все заявки | Заявка |
+| Admin Panel | All Requests | Request Details |
 |-----------------|----------------|----------------|
-| ![Админ панель](https://raw.githubusercontent.com/ahkaz-dev/sercomp-system/main/static/img/screens/admin.png) | ![Все заявки](https://raw.githubusercontent.com/ahkaz-dev/sercomp-system/main/static/img/screens/all-requests.png) | ![Заявка](https://raw.githubusercontent.com/ahkaz-dev/sercomp-system/main/static/img/screens/request.png) 
+| ![Admin Panel](https://raw.githubusercontent.com/ahkaz-dev/sercomp-system/main/static/img/screens/admin.png) | ![All Requests](https://raw.githubusercontent.com/ahkaz-dev/sercomp-system/main/static/img/screens/all-requests.png) | ![Request](https://raw.githubusercontent.com/ahkaz-dev/sercomp-system/main/static/img/screens/request.png) |
+```
