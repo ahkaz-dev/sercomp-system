@@ -2,7 +2,7 @@
 
 A web application for automating the reception and processing of service requests for office equipment repair.  
 The project is written in native PHP and solves real-world business tasks for a service organization.
-[translated this  file to russian](./README_RU.md) 
+[translated this  file to russian](./README_ru.md) 
 
 ---
 ## 🚀 Features
